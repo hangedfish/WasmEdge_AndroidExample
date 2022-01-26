@@ -1,0 +1,4 @@
+[submodule "app/src/main/cpp/vendor/WasmEdgeAndroid"]
+	path = app/src/main/cpp/vendor/WasmEdgeAndroid
+	url = https://github.com/hangedfish/WasmEdgeAndroid.git
+	branch = IDE_friendly
