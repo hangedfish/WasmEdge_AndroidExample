@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
-    <mapping directory="$PROJECT_DIR$/../WasmEdge" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/src/main/cpp/WasmEdge" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/src/main/cpp/WasmEdge/build/_deps/spdlog-src" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/src/main/cpp/WasmEdge/cmake-build-debug/_deps/spdlog-src" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/src/main/cpp/WasmEdge/cmake-build-release/_deps/spdlog-src" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/src/main/cpp/WasmEdge/cmake-ndk-build/_deps/spdlog-src" vcs="Git" />
+    <mapping directory="" vcs="Git" />
   </component>
 </project>
