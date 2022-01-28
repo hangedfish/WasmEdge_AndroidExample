@@ -10,7 +10,7 @@ add_subdirectory(vendor/spdlog)
 
 set(WASMEDGE_SOURCE_DIR vendor/WasmEdge)
 set(WASMEDGE_BUILD_AOT_RUNTIME OFF CACHE BOOL "" FORCE)
-set(WASMEDGE_BUILD_SHARED_LIB ON CACHE BOOL "" FORCE)
+set(WASMEDGE_BUILD_SHARED_LIB OFF CACHE BOOL "" FORCE)
 set(WASMEDGE_BUILD_STATIC_LIB OFF CACHE BOOL "" FORCE)
 set(WASMEDGE_FORCE_DISABLE_LTO ON CACHE BOOL "" FORCE)  # fast fixed problem for `-fuse-ld=gold`, we use lld.
 if (CMAKE_GENERATOR STREQUAL Ninja)
@@ -19,6 +19,27 @@ if (CMAKE_GENERATOR STREQUAL Ninja)
 endif()
 add_subdirectory(${WASMEDGE_SOURCE_DIR})
 include_directories(${WasmEdge_BINARY_DIR}/include/api)
+include_directories(${WASMEDGE_SOURCE_DIR}/include)
+
+add_library(
+        wasmedge_static
+        STATIC
+        ${WASMEDGE_SOURCE_DIR}/lib/api/wasmedge.cpp
+)
+
+target_link_libraries(
+        wasmedge_static
+        wasmedgeSystem
+        wasmedgeCommon
+        wasmedgeLoaderFileMgr
+        wasmedgeLoader
+        wasmedgeValidator
+        wasmedgeExecutor
+        wasmedgeHostModuleWasi
+        wasmedgeHostModuleWasmEdgeProcess
+        wasmedgeVM
+)
+
 
 add_library(
         wasmedge_android_app
@@ -30,6 +51,7 @@ add_library(
 target_link_libraries(
         wasmedge_android_app
         log
-        wasmedge_c_shared
-#        wasmedge_c_static
+        wasmedge_static
+#        z                   # no used
+#        spdlog::spdlog      # no used
 )
