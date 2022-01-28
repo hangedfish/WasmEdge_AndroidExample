@@ -61,9 +61,25 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "read wasm fail", Toast.LENGTH_LONG).show();
                     return;
                 }
-                int idx = 24;
-                int r = nativeWasmFib(fib_wasm, idx);
-                tv.setText(String.format("fib(%d) -> %d", idx, r));
+                tv.setText("running");
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        long startMs = System.currentTimeMillis();
+                        int idx = 32;
+                        int r = nativeWasmFib(fib_wasm, idx);
+                        long endMs =System.currentTimeMillis();
+                        long d = endMs - startMs;
+                        MainActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                tv.setText(String.format("fib(%d) -> %d, %d ms", idx, r, d));
+                            }
+                        });
+                    }
+                });
+                t.start();
+
             }
         });
     }
