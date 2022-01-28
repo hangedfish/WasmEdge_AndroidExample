@@ -1,4 +1,8 @@
-[submodule "app/src/main/cpp/vendor/WasmEdgeAndroid"]
-	path = app/src/main/cpp/vendor/WasmEdgeAndroid
-	url = https://github.com/hangedfish/WasmEdgeAndroid.git
-	branch = IDE_friendly
+[submodule "app/src/main/cpp/vendor/WasmEdge"]
+	path = app/src/main/cpp/vendor/WasmEdge
+	url = git://github.com/WasmEdge/WasmEdge.git
+
+[submodule "app/src/main/cpp/vendor/spdlog"]
+	path = app/src/main/cpp/vendor/spdlog
+	url = git://github.com/gabime/spdlog.git
+	branch = v1.x
